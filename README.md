@@ -7,16 +7,16 @@ jotform-api-python
 
 Install via git clone:
 
-        $ git clone git://github.com/jotform/jotform-api-python.git
+        $ git clone git://github.com/mathewrosssmith/jotform-api-python3.git
         $ cd jotform-api-python
-        
+
 Install via pip:
 
         $ pip install jotform
-        
+
 Install via pip (latest version)
 
-        $ pip install git+git://github.com/jotform/jotform-api-python.git
+        $ pip install git+git://github.com/jotform/jotform-api-python.git#egg=jotform
 
 ### Documentation
 
@@ -44,7 +44,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-```  
+```
 
 Get submissions of the latest form
 
@@ -67,7 +67,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-``` 
+```
 
 Get latest 100 submissions ordered by creation date
 
@@ -84,7 +84,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-``` 
+```
 
 Submission and form filter examples
 
@@ -107,7 +107,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-``` 
+```
 
 Delete last 50 submissions
 
@@ -126,9 +126,9 @@ def main():
 
 if __name__ == "__main__":
     main()
-``` 
+```
 
 First the _JotformAPIClient_ class is included from the _jotform-api-python/jotForm.py_ file. This class provides access to JotForm's API. You have to create an API client instance with your API key. 
 In case of an exception (wrong authentication etc.), you can catch it or let it fail with a fatal error.
 
-    
+​    
