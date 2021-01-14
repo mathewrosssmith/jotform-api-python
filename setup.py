@@ -1,11 +1,27 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
+description = 'JotForm API - Python 3 Client'
+try:
+    with open("README.md", "r") as f:
+        long_desc = f.read()
+except:
+    long_desc = description
 
 setup(
     name="jotform",
-    url='http://api.jotform.com/docs/',
-    version='1.0',
-    description='JotForm API - Python Client',
-    author='JotForm',
-    author_email='api@jotform.com',
-    py_modules=['jotform']
+    url='http://github.com/mathewrosssmith/jotform-api-python3',
+    version='2.0',
+    description=description,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    author='Mathew Smith',
+    author_email='msmith@btech.edu',
+    packages=find_packages(),
+    py_modules=['jotform'],
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6'
 )
