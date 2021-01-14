@@ -1,22 +1,30 @@
-jotform-api-python 
+jotform-api-python3 
 ===============
 [JotForm API](http://api.jotform.com/docs/) - Python Client
+
+A forked repo from [jotform-api-python](https://github.com/jotform/jotform-api-python) modified to work with Python versions 3.6+.
 
 
 ### Installation
 
 Install via git clone:
 
-        $ git clone git://github.com/mathewrosssmith/jotform-api-python3.git
-        $ cd jotform-api-python
+```shell
+    $ git clone git://github.com/mathewrosssmith/jotform-api-python3.git
+    $ cd jotform-api-python
+```
 
 Install via pip:
 
-        $ pip install jotform
+```shell
+    $ pip install jotform
+```
 
 Install via pip (latest version)
 
-        $ pip install git+git://github.com/jotform/jotform-api-python.git#egg=jotform
+```shell
+    $ pip install git+git://github.com/mathewrosssmith/jotform-api-python3.git#egg=jotform
+```
 
 ### Documentation
 
@@ -128,7 +136,7 @@ if __name__ == "__main__":
     main()
 ```
 
-First the _JotformAPIClient_ class is included from the _jotform-api-python/jotForm.py_ file. This class provides access to JotForm's API. You have to create an API client instance with your API key. 
+First the _JotformAPIClient_ class is included from the _jotform-api-python3/jotForm.py_ file. This class provides access to JotForm's API. You have to create an API client instance with your API key. 
 In case of an exception (wrong authentication etc.), you can catch it or let it fail with a fatal error.
 
 ​    
