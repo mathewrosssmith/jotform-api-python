@@ -3,9 +3,9 @@ from setuptools import setup, find_packages
 description = 'JotForm API - Python 3 Client'
 try:
     with open("README.md", "r") as f:
-        long_desc = f.read()
+        long_description = f.read()
 except:
-    long_desc = description
+    long_description = description
 
 setup(
     name="jotform",
