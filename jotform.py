@@ -11,20 +11,17 @@
 from urllib.parse import urlencode
 from urllib.request import urlopen, Request
 import json
+from xml.dom.minidom import parseString # If outputType != json, this will parse the xml returned
 
 class JotformAPIClient:
-    __baseUrl = 'https://api.jotform.com/'
-    __apiVersion = 'v1'
-
-    __apiKey = None
-    __debugMode = False
-    __outputType = "json"
     
     def __init__(self, apiKey='', outputType='json', debug=False):
-
+        self.__apiVersion = 'v1'
+        self.__baseUrl = 'https://api.jotform.com/'
         self.__apiKey = apiKey
         self.__debugMode = debug
         self.__outputType = outputType.lower()
+        self.__limitLeft = None
 
     def _log(self, message):
         if self.__debugMode:
@@ -42,6 +39,11 @@ class JotformAPIClient:
         return self.__outputType
     def set_outputType(self, value):
         self.__outputType = value
+
+    def get_limitLeft(self):
+        return self.__limitLeft
+    def set_limitLeft(self, value):
+        self.__limitLeft = value
 
     def fetch_url(self, url, params=None, method=None):
         if(self.__outputType != 'json'):
@@ -78,12 +80,16 @@ class JotformAPIClient:
         response = urlopen(req)
 
         if (self.__outputType == 'json'):
-            responseObject = json.loads(response.read())
-            return responseObject['content']
+            data = json.loads(response.read())
+            for k, v in data.items():
+                if k == 'content':
+                    continue
+                self._log((k, v))
+            self.__limitLeft, data = data.get('limit-left', self.__limitLeft), data.get('content')
         else:
             data = response.read()
-            response.close()
-            return data
+        response.close()
+        return data
 
     def create_conditions(self, offset, limit, filterArray, order_by):
         args = {'offset': offset, 'limit': limit, 'filter': filterArray, 'orderby': order_by}
