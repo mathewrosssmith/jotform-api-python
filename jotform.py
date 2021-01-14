@@ -8,10 +8,9 @@
 # version : 1.0
 # package : JotFormAPI 
 
-import urllib
-import urllib2
+from urllib.parse import urlencode
+from urllib.request import urlopen, Request
 import json
-from xml.dom.minidom import parseString
 
 class JotformAPIClient:
     __baseUrl = 'https://api.jotform.com/'
@@ -60,23 +59,23 @@ class JotformAPIClient:
 
         if (method == 'GET'):
             if (params):
-                url = url + '?' + urllib.urlencode(params)
+                url = url + '?' + urlencode(params)
 
-            req = urllib2.Request(url, headers=headers, data=None)
+            req = Request(url, headers=headers, data=None)
         elif (method == 'POST'):
             if (params):
-                data = urllib.urlencode(params)
+                data = urlencode(params)
             else:
                 data = None
-            req = urllib2.Request(url, headers=headers, data=data)
+            req = Request(url, headers=headers, data=data)
         elif (method == 'DELETE'):
-            req = urllib2.Request(url, headers=headers, data=None)
+            req = Request(url, headers=headers, data=None)
             req.get_method = lambda: 'DELETE'
         elif (method == 'PUT'):
-            req = urllib2.Request(url, headers=headers, data=params)
+            req = Request(url, headers=headers, data=params)
             req.get_method = lambda: 'PUT'
 
-        response = urllib2.urlopen(req)
+        response = urlopen(req)
 
         if (self.__outputType == 'json'):
             responseObject = json.loads(response.read())
