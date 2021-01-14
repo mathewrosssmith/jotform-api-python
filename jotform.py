@@ -29,7 +29,7 @@ class JotformAPIClient:
 
     def _log(self, message):
         if self.__debugMode:
-            print message
+            print(message)
 
     def set_baseurl(self, baseurl):
         self.__baseUrl = baseurl
